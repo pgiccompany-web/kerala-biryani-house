@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kerala Biryani House | Vadakara</title>
+<meta name="description" content="Kerala Biryani House in Vadakara, Kerala. Authentic dum biryani and Malabar specialties.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #0b3d2e;
+    --green: #146c43;
+    --green-light: #1f8a5b;
+    --gold: #d4a017;
+    --gold-light: #f2c94c;
+    --cream: #fdf8ec;
+    --text: #1f2a24;
+    --muted: #5b6b63;
+    --white: #ffffff;
+    --radius: 14px;
+    --shadow: 0 6px 20px rgba(11, 61, 46, 0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+  body {
+    font-family: 'Poppins', system-ui, sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    line-height: 1.6;
+  }
+  img, iframe { max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3 { line-height: 1.25; }
+
+  .container { width: 100%; padding: 0 20px; margin: 0 auto; }
+  .section { padding: 60px 0; }
+  .section-title { text-align: center; margin-bottom: 36px; }
+  .section-title h2 { font-size: 1.9rem; color: var(--green-dark); font-weight: 700; }
+  .section-title span {
+    display: block; width: 60px; height: 3px; margin: 10px auto 0;
+    background: var(--gold); border-radius: 3px;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 26px; border-radius: 50px; font-weight: 600; font-size: 0.95rem;
+    border: 2px solid transparent; cursor: pointer; transition: all .25s ease;
+  }
+  .btn-gold { background: var(--gold); color: var(--green-dark); }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline { border-color: var(--gold); color: var(--gold-light); background: transparent; }
+  .btn-outline:hover { background: var(--gold); color: var(--green-dark); }
+  .btn-whatsapp { background: #25d366; color: #fff; }
+  .btn-whatsapp:hover { background: #1ebe5a; transform: translateY(-2px); }
+
+  /* Header */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--green-dark); box-shadow: 0 2px 10px rgba(0,0,0,.2);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between; height: 66px;
+  }
+  .logo { color: var(--gold-light); font-weight: 700; font-size: 1.05rem; }
+  .logo small { display: block; font-size: 0.7rem; font-weight: 400; color: #cfe5da; letter-spacing: 1px; }
+  .menu-toggle {
+    background: none; border: none; cursor: pointer; width: 38px; height: 38px;
+    display: flex; flex-direction: column; justify-content: center; gap: 5px;
+  }
+  .menu-toggle span { display: block; height: 3px; background: var(--gold-light); border-radius: 2px; transition: .3s; }
+  .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .menu-toggle.active span:nth-child(2) { opacity: 0; }
+  .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+  .nav-links {
+    position: absolute; top: 66px; left: 0; right: 0; background: var(--green-dark);
+    flex-direction: column; align-items: center; gap: 0; max-height: 0; overflow: hidden;
+    transition: max-height .35s ease; display: flex;
+  }
+  .nav-links.open { max-height: 320px; }
+  .nav-links a {
+    padding: 14px 0; width: 100%; text-align: center; color: #e8f3ee; font-weight: 500;
+    border-top: 1px solid rgba(255,255,255,.08);
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh; min-height: 100svh;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 110px 20px 70px;
+    background:
+      linear-gradient(160deg, rgba(11,61,46,.92), rgba(20,108,67,.85)),
+      radial-gradient(circle at 20% 20%, rgba(212,160,23,.35), transparent 45%);
+    color: var(--white);
+  }
+  .hero-tag {
+    display: inline-block; padding: 6px 16px; border: 1px solid var(--gold);
+    border-radius: 50px; color: var(--gold-light); font-size: .8rem; letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .hero h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 16px; }
+  .hero h1 em { font-style: normal; color: var(--gold-light); }
+  .hero p { max-width: 560px; margin: 0 auto 30px; color: #d9ebe2; font-size: 1rem; }
+  .hero-buttons { display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 320px; margin: 0 auto; }
+
+  /* Menu */
+  .menu { background: var(--white); }
+  .menu-grid { display: grid; gap: 22px; grid-template-columns: 1fr; }
+  .dish {
+    background: var(--cream); border-radius: var(--radius); padding: 26px 22px;
+    box-shadow: var(--shadow); border-top: 4px solid var(--gold);
+    transition: transform .25s ease;
+  }
+  .dish:hover { transform: translateY(-4px); }
+  .dish-icon { font-size: 2.2rem; margin-bottom: 10px; }
+  .dish h3 { font-size: 1.1rem; color: var(--green-dark); margin-bottom: 6px; }
+  .dish p { font-size: .9rem; color: var(--muted); margin-bottom: 14px; }
+  .dish-price { font-weight: 700; color: var(--green); font-size: 1.05rem; }
+  .dish-tag {
+    display: inline-block; font-size: .7rem; padding: 3px 10px; border-radius: 50px;
+    background: var(--green); color: var(--gold-light); margin-bottom: 10px; letter-spacing: .5px;
+  }
+
+  /* About */
+  .about { background: var(--cream); }
+  .about-content { display: grid; gap: 30px; }
+  .about-card {
+    background: var(--green-dark); color: #e8f3ee; border-radius: var(--radius);
+    padding: 30px 24px; box-shadow: var(--shadow);
+  }
+  .about-card h3 { color: var(--gold-light); margin-bottom: 12px; font-size: 1.25rem; }
+  .about-card p { font-size: .95rem; color: #cfe5da; margin-bottom: 14px; }
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+  .feature {
+    background: rgba(255,255,255,.06); border: 1px solid rgba(212,160,23,.3);
+    border-radius: 10px; padding: 14px; text-align: center; font-size: .85rem;
+  }
+  .feature strong { display: block; font-size: 1.4rem; color: var(--gold-light); }
+
+  /* Contact */
+  .contact { background: var(--white); }
+  .contact-grid { display: grid; gap: 28px; }
+  .contact-info { background: var(--cream); border-radius: var(--radius); padding: 28px 24px; box-shadow: var(--shadow); }
+  .contact-info h3 { color: var(--green-dark); margin-bottom: 18px; font-size: 1.2rem; }
+  .info-item { display: flex; gap: 14px; margin-bottom: 18px; }
+  .info-icon {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    background: var(--green); display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .info-item strong { display: block; color: var(--green-dark); font-size: .95rem; }
+  .info-item span { font-size: .9rem; color: var(--muted); }
+  .contact-info .btn { width: 100%; margin-top: 8px; }
+  .map-wrap {
+    border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+    border: 4px solid var(--gold); min-height: 300px;
+  }
+  .map-wrap iframe { width: 100%; height: 320px; border: 0; display: block; }
+
+  /* Footer */
+  footer { background: var(--green-dark); color: #cfe5da; text-align: center; padding: 26px 20px; font-size: .85rem; }
+  footer strong { color: var(--gold-light); }
+
+  /* Floating WhatsApp */
+  .wa-float {
+    position: fixed; right: 18px; bottom: 18px; z-index: 99;
+    width: 56px; height: 56px; border-radius: 50%; background: #25d366;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 16px rgba(0,0,0,.25); transition: transform .2s;
+  }
+  .wa-float:hover { transform: scale(1.08); }
+  .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
+  /* Tablet and up */
+  @media (min-width: 640px) {
+    .hero h1 { font-size: 3rem; }
+    .hero-buttons { flex-direction: row; max-width: none; justify-content: center; }
+    .hero-buttons .btn { width: auto; }
+    .menu-grid { grid-template-columns: repeat(2, 1fr); }
+    .features { grid-template-columns: repeat(4, 1fr); }
+    .section-title h2 { font-size: 2.3rem; }
+  }
+
+  /* Desktop */
+  @media (min-width: 900px) {
+    .container { max-width: 1140px; }
+    .section { padding: 90px 0; }
+    .menu-toggle { display: none; }
+    .nav-links {
+      position: static; flex-direction: row; max-height: none; overflow: visible;
+      background: none; gap: 30px;
+    }
+    .nav-links a { width: auto; padding: 0; border: none; color: #e8f3ee; font-size: .95rem; }
+    .menu-grid { grid-template-columns: repeat(3, 1fr); }
+    .about-content { grid-template-columns: 1fr 1fr; align-items: center; }
+    .contact-grid { grid-template-columns: 1fr 1.2fr; align-items: stretch; }
+    .hero h1 { font-size: 3.6rem; }
+    .wa-float { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="container nav">
+    <a href="#home" class="logo">KERALA BIRYANI HOUSE<small>VADAKARA · KERALA</small></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="container">
+    <span class="hero-tag">Authentic Malabar Cuisine</span>
+    <h1>Real Kerala <em>Dum Biryani</em>,<br>Slow-Cooked to Perfection</h1>
+    <p>Fragrant basmati, tender meat, and hand-ground spices, served fresh every day in Vadakara.</p>
+    <div class="hero-buttons">
+      <a href="#menu" class="btn btn-gold">View Menu</a>
+      <a href="#contact" class="btn btn-outline">Find Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- Menu -->
+<section class="section menu" id="menu">
+  <div class="container">
+    <div class="section-title">
+      <h2>Our Signature Menu</h2>
+      <span></span>
+    </div>
+    <div class="menu-grid">
+      <article class="dish">
+        <div class="dish-icon">🍗</div>
+        <span class="dish-tag">BESTSELLER</span>
+        <h3>Chicken Dum Biryani</h3>
+        <p>Tender chicken layered with aromatic Kaima rice, slow-cooked in a sealed pot.</p>
+        <div class="dish-price">₹ 220</div>
+      </article>
+      <article class="dish">
+        <div class="dish-icon">🥩</div>
+        <h3>Mutton Dum Biryani</h3>
+        <p>Soft, bone-in mutton with saffron, fried onions, and a rich Malabar masala.</p>
+        <div class="dish-price">₹ 320</div>
+      </article>
+      <article class="dish">
+        <div class="dish-icon">🐟</div>
+        <h3>Malabar Fish Biryani</h3>
+        <p>Fresh seer fish marinated in coastal spices, layered with fragrant rice.</p>
+        <div class="dish-price">₹ 260</div>
+      </article>
+      <article class="dish">
+        <div class="dish-icon">🍤</div>
+        <h3>Prawns Biryani</h3>
+        <p>Juicy prawns cooked with curry leaves, green chilies, and ghee-roasted rice.</p>
+        <div class="dish-price">₹ 290</div>
+      </article>
+      <article class="dish">
+        <div class="dish-icon">🥚</div>
+        <h3>Egg Biryani</h3>
+        <p>Boiled eggs roasted in spiced onion masala with long-grain basmati.</p>
+        <div class="dish-price">₹ 150</div>
+      </article>
+      <article class="dish">
+        <div class="dish-icon">🥗</div>
+        <span class="dish-tag">VEG</span>
+        <h3>Vegetable Dum Biryani</h3>
+        <p>Seasonal vegetables and paneer slow-cooked with saffron rice and mint.</p>
+        <div class="dish-price">₹ 180</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="section-title">
+      <h2>About Us</h2>
+      <span></span>
+    </div>
+    <div class="about-content">
+      <div class="about-card">
+        <h3>Our Story</h3>
+        <p>Kerala Biryani House brings the traditional flavours of Malabar to Vadakara. Every pot is prepared in the dum style, sealed and cooked slowly so the rice absorbs every layer of spice.</p>
+        <p>We use fresh ingredients, hand-ground masalas, and recipes passed down through generations of Malabar kitchens.</p>
+      </div>
+      <div class="about-card">
+        <h3>Why Choose Us</h3>
+        <div class="features">
+          <div class="feature"><strong>100%</strong>Fresh Daily</div>
+          <div class="feature"><strong>Dum</strong>Slow Cooked</div>
+          <div class="feature"><strong>Halal</strong>Certified Meat</div>
+          <div class="feature"><strong>Home</strong>Style Taste</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="section-title">
+      <h2>Visit or Order</h2>
+      <span></span>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Get in Touch</h3>
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <strong>Address</strong>
+            <span>Main Road, Vadakara, Kozhikode District, Kerala 673104</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <strong>Phone / WhatsApp</strong>
+            <span>+91-87*****77</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🕒</div>
+          <div>
+            <strong>Opening Hours</strong>
+            <span>Daily: 11:00 AM – 11:00 PM</span>
+          </div>
+        </div>
+        <a href="https://wa.me/918700000077?text=Hello%20Kerala%20Biryani%20House%2C%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener" class="btn btn-whatsapp">
+          Chat on WhatsApp
+        </a>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=Vadakara,+Kerala&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Kerala Biryani House location on Google Map">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Kerala Biryani House</strong> · Vadakara, Kerala</p>
+  <p>&copy; <span id="year"></span> All rights reserved.</p>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/918700000077?text=Hello%20Kerala%20Biryani%20House%2C%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12 0C5.4 0 .1 5.3.1 11.8c0 2.1.5 4.1 1.5 5.9L0 24l6.5-1.7a11.9 11.9 0 0 0 5.5 1.4c6.6 0 11.9-5.3 11.9-11.8 0-3.2-1.2-6.2-3.4-8.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.9 1 1-3.8-.2-.4a9.8 9.8 0 0 1-1.5-5.2C2 6.4 6.4 2 12 2c2.6 0 5.1 1 7 2.9a9.8 9.8 0 0 1 2.9 7c0 5.5-4.5 9.9-9.9 9.9zm5.4-7.4c-.3-.1-1.8-.9-2.1-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+  // Mobile navigation toggle
+  const toggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+
+  // Close mobile menu when a link is tapped
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.classList.remove('active');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  // Dynamic footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
